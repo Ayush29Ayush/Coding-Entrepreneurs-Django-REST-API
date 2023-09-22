@@ -2,3 +2,5 @@
 2. pip freeze > requirements.txt
 3. django-admin startproject cfehome .
 4. Run the server from backend dir and copy the endpoint to py_client/basics.py 
+5. python manage.py startapp api, then add that app in the project settings
+6. Created urls and views for the api app and included those url to project's urls.py. Make changes in py_client/basics.py and now able to get JSON response.
