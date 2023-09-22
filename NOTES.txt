@@ -4,4 +4,5 @@
 4. Run the server from backend dir and copy the endpoint to py_client/basics.py 
 5. python manage.py startapp api, then add that app in the project settings
 6. Created urls and views for the api app and included those url to project's urls.py. Make changes in py_client/basics.py and now able to get JSON response.
-7. Checking and appending contents of a request and returning them as JSON response
+7. Checking and appending contents of a request and returning them as JSON response.
+8. Create a new app "products" and a new model inside it. Then "python manage.py makemigrations" and "python manage.py migrate"
