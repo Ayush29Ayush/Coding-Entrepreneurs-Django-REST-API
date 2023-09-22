@@ -1,3 +1,4 @@
 1. Create a virtual env using "python -m venv venv" 
 2. pip freeze > requirements.txt
 3. django-admin startproject cfehome .
+4. Run the server from backend dir and copy the endpoint to py_client/basics.py 
