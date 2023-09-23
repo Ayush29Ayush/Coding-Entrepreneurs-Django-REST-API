@@ -32,6 +32,31 @@ class ProductDetailAPIView(generics.RetrieveAPIView):
 
 product_detail_view = ProductDetailAPIView.as_view()
 
+#! UpdateAPIView => Used for update-only endpoints for a single model instance. Provides put and patch method handlers.
+class ProductUpdateAPIView(generics.UpdateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    lookup_field = 'pk'
+
+    def perform_update(self, serializer):
+        instance = serializer.save()
+        if not instance.content:
+            instance.content = instance.title
+
+product_update_view = ProductUpdateAPIView.as_view()
+
+#! DestroyAPIView => Used for delete-only endpoints for a single model instance. Provides a delete method handler.
+class ProductDestroyAPIView(generics.DestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    lookup_field = 'pk'
+
+    def perform_destroy(self, instance):
+        # instance 
+        super().perform_destroy(instance)
+
+product_destroy_view = ProductDestroyAPIView.as_view()
+
 
 #! ListAPIView => Used for read-only endpoints to represent a collection of model instances. Provides a get method handler.
 # class ProductListAPIView(generics.ListAPIView):
