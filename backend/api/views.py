@@ -18,14 +18,27 @@ from products.serializers import ProductSerializer
 #         print("Data =>",data)
 #     return Response(data) # This will return clean JSON type response
 
-@api_view(["GET"])
+# @api_view(["GET"])
+# def api_home(request, *args, **kwargs):
+#     """
+#     DRF API View
+#     """
+#     instance = Product.objects.all().order_by("?").first()
+#     data = {}
+#     if instance:
+#         # data = model_to_dict(instance, fields=['id', 'title', 'price', 'sale_price'])
+#         data = ProductSerializer(instance).data
+#     return Response(data)
+
+@api_view(['POST'])
 def api_home(request, *args, **kwargs):
     """
     DRF API View
     """
-    instance = Product.objects.all().order_by("?").first()
-    data = {}
-    if instance:
-        # data = model_to_dict(instance, fields=['id', 'title', 'price', 'sale_price'])
-        data = ProductSerializer(instance).data
-    return Response(data)
+    serializer = ProductSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+        # instance = serializer.save()
+        # print(instance)
+        print(serializer.data)
+        return Response(serializer.data)
+    return Response({"invalid": "not good data"}, status=400)
