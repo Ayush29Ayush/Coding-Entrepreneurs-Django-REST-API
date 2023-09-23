@@ -15,3 +15,15 @@
 10. Now write the view to access this Product models data and return the JSON response.
 11. Use model_to_dict to convert data to dict and pass response as JSON.
 12. Use api.view decorators to set allowed request methods with ease.
+13. Serializers can be used to set rules and validation on the data received and on the flow of model's data.
+
+Ques) Why do we need serializer?
+Ans)-> Because when we do Model_name.objects.all(), it will give [1,2,3,4] which is a queryset. We cannot expose our queryset to the frontend. It should be in a JSON format, to do that we use SERIALIZER. So basically you pass data to the SERIALIZER and it converts them into JSON format.
+    -> It also helps set up required fields.
+
+Ques) Validation of data using serializer?
+Ans) To maintain consistensy of data and validate whether the data coming follows the rules.
+
+14. You can also get custom fields which are not defined as model fields using Serializers.
+15. To create a function to call get_discount function and save that returned data inside variable named "my_discount", use get_variable_name. So we create a function in this serializer named get_my_discount(). 
+16. Most commonly used serializer is ModelSerializer.
