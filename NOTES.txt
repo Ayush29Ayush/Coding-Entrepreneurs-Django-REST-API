@@ -29,3 +29,4 @@ Ans) To maintain consistensy of data and validate whether the data coming follow
 16. Most commonly used serializer is ModelSerializer.
 17. The only way to create a instance is through using serializer.save()
 18. RetrieveAPIView => Used for read-only endpoints to represent a single model instance. Provides a get method handler.
+19. CreateAPIView => Used for create-only endpoints. Provides a post method handler.
