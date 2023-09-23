@@ -27,3 +27,4 @@ Ans) To maintain consistensy of data and validate whether the data coming follow
 14. You can also get custom fields which are not defined as model fields using Serializers.
 15. To create a function to call get_discount function and save that returned data inside variable named "my_discount", use get_variable_name. So we create a function in this serializer named get_my_discount(). 
 16. Most commonly used serializer is ModelSerializer.
+17. The only way to create a instance is through using serializer.save()
