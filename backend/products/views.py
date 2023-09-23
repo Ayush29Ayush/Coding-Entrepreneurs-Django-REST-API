@@ -5,7 +5,8 @@ from .models import Product
 from .serializers import ProductSerializer
 
 #! CreateAPIView => Used for create-only endpoints. Provides a post method handler.
-class ProductCreateAPIView(generics.CreateAPIView):
+#! ListCreateAPIView => Used for read-write endpoints to represent a collection of model instances. Provides get and post method handlers.
+class ProductListCreateAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
@@ -17,7 +18,7 @@ class ProductCreateAPIView(generics.CreateAPIView):
             content = title
         serializer.save(content=content)
         
-product_create_view = ProductCreateAPIView.as_view()
+product_list_create_view = ProductListCreateAPIView.as_view()
 
 #! RetrieveAPIView => Used for read-only endpoints to represent a single model instance. Provides a get method handler.
 class ProductDetailAPIView(generics.RetrieveAPIView):
@@ -27,3 +28,14 @@ class ProductDetailAPIView(generics.RetrieveAPIView):
 
 
 product_detail_view = ProductDetailAPIView.as_view()
+
+
+#! ListAPIView => Used for read-only endpoints to represent a collection of model instances. Provides a get method handler.
+class ProductListAPIView(generics.ListAPIView):
+    '''
+    Not gonna use this method
+    '''
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+product_list_view = ProductListAPIView.as_view()
