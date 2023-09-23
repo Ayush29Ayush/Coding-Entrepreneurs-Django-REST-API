@@ -33,3 +33,6 @@ Ans) To maintain consistensy of data and validate whether the data coming follow
 20. ListCreateAPIView => Used for read-write endpoints to represent a collection of model instances. Provides get and post method handlers.
 
 21. genericAPIviews are better than @api_view decorators(functional based views) because of less lines of code and less confusion. Predefined and easy to use.
+
+22. UpdateAPIView => Used for update-only endpoints for a single model instance. Provides put and patch method handlers.
+23. DestroyAPIView => Used for delete-only endpoints for a single model instance. Provides a delete method handler.
