@@ -13,3 +13,5 @@
 >>> Product.objects.create(title="Hello again", content="Hello content again", price=155.22) 
 <Product: Product object (2)>
 10. Now write the view to access this Product models data and return the JSON response.
+11. Use model_to_dict to convert data to dict and pass response as JSON.
+12. Use api.view decorators to set allowed request methods with ease.
