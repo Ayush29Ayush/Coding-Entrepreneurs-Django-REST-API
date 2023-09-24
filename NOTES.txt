@@ -42,3 +42,6 @@ Ans) To maintain consistensy of data and validate whether the data coming follow
 
 26. Session Authentication and Permissions can be used using "from rest_framework import authentication, permissions". Use authentication_classes = [authentication.SessionAuthentication] and permission_classes = [permissions.IsAuthenticated] in your view. Now create a super user and login, then django will automatically use the session token logic and since you have logged in, you will be authenticated.
 27. Custom Permissions can also be set. Check documentation.
+
+28. Implement Token Authentication, refer docs. Here also we are implementing token authentication.
+29. Here we are not making the token expire after some time, which should be implemented. Recommended that you go will 3rd party authentication packages rather than writing everything from scratch.
