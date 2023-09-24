@@ -39,3 +39,5 @@ Ans) To maintain consistensy of data and validate whether the data coming follow
 
 24. In class based view, we write functions to handle request methods whereas in functional based view, we write conditions to handle request methods.
 25. Mixins in the context of Python and Django are classes that provide a set of methods and behaviors that can be easily reused in other classes. They are typically used for code reusability and to add specific functionalities to a class without the need for multiple inheritance.
+
+26. Session Authentication and Permissions can be used using "from rest_framework import authentication, permissions". Use authentication_classes = [authentication.SessionAuthentication] and permission_classes = [permissions.IsAuthenticated] in your view. Now create a super user and login, then django will automatically use the session token logic and since you have logged in, you will be authenticated.
