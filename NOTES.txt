@@ -47,3 +47,5 @@ Ans) To maintain consistensy of data and validate whether the data coming follow
 29. Here we are not making the token expire after some time, which should be implemented. Recommended that you go will 3rd party authentication packages rather than writing everything from scratch.
 
 30. Rather than setting permission_classes in every view, just create a mixins(similar to a function which can be imported and used) and pass it as a parameter to all the views. So whenever you have to change anyy permission, directly change it in mixins.py and it will be reflected in every view
+
+31. Use viewsets.ModelViewSet and just give these 2 fields i.e queryset = Product.objects.all() and serializer_class = ProductSerializer. All the CRUD APIs will be created by its own by the ModelViewSet. Include the router in the urls.py
