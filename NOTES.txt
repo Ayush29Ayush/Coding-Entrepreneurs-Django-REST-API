@@ -49,3 +49,5 @@ Ans) To maintain consistensy of data and validate whether the data coming follow
 30. Rather than setting permission_classes in every view, just create a mixins(similar to a function which can be imported and used) and pass it as a parameter to all the views. So whenever you have to change anyy permission, directly change it in mixins.py and it will be reflected in every view
 
 31. Use viewsets.ModelViewSet and just give these 2 fields i.e queryset = Product.objects.all() and serializer_class = ProductSerializer. All the CRUD APIs will be created by its own by the ModelViewSet. Include the router in the urls.py
+
+32. Check from these codes, how to add custom validation to serializers. We can also add validation directly on Models such as to set unique names to model fields.
