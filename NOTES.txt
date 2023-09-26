@@ -51,3 +51,5 @@ Ans) To maintain consistensy of data and validate whether the data coming follow
 31. Use viewsets.ModelViewSet and just give these 2 fields i.e queryset = Product.objects.all() and serializer_class = ProductSerializer. All the CRUD APIs will be created by its own by the ModelViewSet. Include the router in the urls.py
 
 32. Check from these codes, how to add custom validation to serializers. We can also add validation directly on Models such as to set unique names to model fields.
+
+33. Check how to get data from other models connected through foreign key using Foreign Key Serializer.
