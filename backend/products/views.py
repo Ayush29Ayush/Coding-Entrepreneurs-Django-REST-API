@@ -5,7 +5,7 @@ from rest_framework.response import Response
 # from django.http import Http404
 from django.shortcuts import get_object_or_404
 from api.authentication import TokenAuthentication
-from api.mixins import StaffEditorPermissionMixin
+from api.mixins import StaffEditorPermissionMixin, UserQuerySetMixin
 
 from .models import Product
 # from ..api.permissions import IsStaffEditorPermission
@@ -15,6 +15,7 @@ from .serializers import ProductSerializer
 #! CreateAPIView => Used for create-only endpoints. Provides a post method handler.
 #! ListCreateAPIView => Used for read-write endpoints to represent a collection of model instances. Provides get and post method handlers.
 class ProductListCreateAPIView(
+    UserQuerySetMixin,
     StaffEditorPermissionMixin,
     generics.ListCreateAPIView):
     queryset = Product.objects.all()
@@ -31,14 +32,23 @@ class ProductListCreateAPIView(
         content = serializer.validated_data.get("content") or None
         if content is None:
             content = title
-        serializer.save(content=content)
+        serializer.save(user = self.request.user,content=content)
+        
+    # def get_queryset(self, *args, **kwargs):
+    #     qs = super().get_queryset(*args, **kwargs)
+    #     request = self.request
+    #     user = request.user
+    #     if not user.is_authenticated:
+    #         return Product.objects.none()
+    #     # print(request.user)
+    #     return qs.filter(user=request.user)
 
 
 product_list_create_view = ProductListCreateAPIView.as_view()
 
 
 #! RetrieveAPIView => Used for read-only endpoints to represent a single model instance. Provides a get method handler.
-class ProductDetailAPIView(StaffEditorPermissionMixin,generics.RetrieveAPIView):
+class ProductDetailAPIView(UserQuerySetMixin,StaffEditorPermissionMixin,generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # permission_classes = [permissions.IsAdminUser, IsStaffEditorPermission]
@@ -49,7 +59,7 @@ product_detail_view = ProductDetailAPIView.as_view()
 
 
 #! UpdateAPIView => Used for update-only endpoints for a single model instance. Provides put and patch method handlers.
-class ProductUpdateAPIView(StaffEditorPermissionMixin,generics.UpdateAPIView):
+class ProductUpdateAPIView(UserQuerySetMixin,StaffEditorPermissionMixin,generics.UpdateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # permission_classes = [permissions.IsAdminUser, IsStaffEditorPermission]
