@@ -53,3 +53,5 @@ Ans) To maintain consistensy of data and validate whether the data coming follow
 32. Check from these codes, how to add custom validation to serializers. We can also add validation directly on Models such as to set unique names to model fields.
 
 33. Check how to get data from other models connected through foreign key using Foreign Key Serializer.
+
+34. We can also add pagination in the settings.py of the project app.
